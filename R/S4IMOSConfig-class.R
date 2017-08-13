@@ -7,7 +7,8 @@ DEFAULT_APPLICATION_FOLDER <- "~/s4imos_data"
 DEFAULT_GENOMES_FOLDER <- "~/s4imos_data/genomes"
 
 
-#'@export
+#'@export S4IMOSConfig
+#'@exportClass S4IMOSConfig
 S4IMOSConfig <- setClass(
   "S4IMOSConfig",
   
