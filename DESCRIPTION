@@ -1,8 +1,12 @@
 Package: S4IMOS
+Type: Package
 Title: S4IMOS is a project to aid meta-omics data simulation in R
-Version: 0.1
+Version: 0.1.0
 Authors@R: c(person("Felipe", "Lima", email = "felipepratalima@gmail.com", role = c("aut","cre")))
+Maintainer: The package maintainer <yourself@somewhere.net>
 Description: S4IMOS is a project to aid meta-omics data simulation in R
-Depends: R
 License: Apache License 2.0
-RoxygenNote: 6.0.1.9000
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat
+Imports: magrittr
