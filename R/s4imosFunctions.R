@@ -543,7 +543,7 @@ getFtpPath <- function(summaryResult, ncbiDatabase = "genbank") {
   return(ftpPath)
 }
 
-getGenomesAndCdss <- function(genomesFolder, cdssFolder, referenceDataDF, checkDownloadStatus = T) {
+getGenomesAndCdss <- function(genomesFolder, cdssFolder, referenceDataDF, checkDownloadStatus = T, searchTermComplement = "") {
   if (checkDownloadStatus == FALSE) {
     referenceDataDF$assemblyname <- NA
     referenceDataDF$taxid <- NA
@@ -564,13 +564,11 @@ getGenomesAndCdss <- function(genomesFolder, cdssFolder, referenceDataDF, checkD
       searchTerm <- referenceDataDF$searchTerm[i]
       
       ## Get summaries by search term
-      summaryResults <- getSearchSummary(searchTerm)
+      summaryResults <- getSearchSummary(paste0(searchTerm, searchTermComplement))
       if (isSingleSummary(summaryResults)) {
         summaryResults <- list(summaryResults)
-      }
-      
-      if (summaryResults %>% length > 20) {
-        summaryResults <- getSearchSummary(searchTerm %>% paste0(' "complete genome"'))
+      } else {
+        stop("Ops! Search term seems to be related to more than one assembly record: " %>% paste0(searchTerm, searchTermComplement))
       }
       
       ## Get Genomes and Cdss
